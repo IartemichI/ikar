@@ -1,4 +1,9 @@
 <?php
+require_once get_template_directory() . '/functions/enqueue_js_and_css.php';
+require_once get_template_directory() . '/functions/custom_meta_box.php';
+
+add_theme_support( 'post-thumbnails' );
+
 add_filter( 'show_admin_bar', '__return_false' );
 add_theme_support( 'menus' );
 
@@ -11,14 +16,11 @@ function my_theme_localized( $locale ) {
 	return $locale;
 }
 
-
 add_action( 'after_setup_theme', 'my_theme_setup' );
 function my_theme_setup() {
 	load_theme_textdomain( 'ikar', get_template_directory() . '/lang' );
 
 }
-
-require_once get_template_directory() . '/functions/enqueue_js_and_css.php';
 
 function get_logo(): string {
 	$upload_dir = wp_get_upload_dir();
